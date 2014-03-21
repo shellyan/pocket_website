@@ -15,27 +15,43 @@
 <html>
     <head>
     <link rel="stylesheet" href="{{ STATIC_URL }}django_tables2/themes/paleblue/css/screen.css" />
+    <style>
+    table{
+        font-size: 50px;
+        width:300px;
 
-    <script type="text/javascript">
-    var data = ["A", "B", "C", "D", "E", "F", "G", "H", "I" ]; // corrected Array syntax
-    var table = document.createElement("table");
-    var i = 0;
-    for (var r = 0; r < 3; r++) {
-      var row = table.insertRow(-1);
-      for (var c = 0; c < 3; c++) {
-        var cell = row.insertCell(-1);
-        cell.appendChild(document.createTextNode(data[i++]));
-      }
     }
-
-    document.body.appendChild(table);
-    </script>
-
-
-    original set is
-    {% for n in number %}
-        {{  n.number }}
-    {% endfor %}
+    #color0{
+    background:#f00
+    }
+    #color1{
+    background:#0f0
+    }
+    #color2{
+    background:#00f
+    }
+    #color3{
+    background:#f0f
+    }
+    #color4{
+    background:#500
+    }
+    #color5{
+    background:#050
+    }
+    #color6{
+    background:#ffe761;
+    }
+    #color7{
+    background:#ffefef;
+    }
+    #color8{
+    background:#444
+    }
+    #color9{
+    background:#0ff
+    }
+    </style>
     </head>
 {#    <div class="list">#}
 {#    <ul>#}
@@ -48,7 +64,9 @@
 
     <table><tr>
     {% for field in number %}
-       <td>{{ field }}</td>
+       <td  id = 'color{{ field }}' >
+           {{ field }}
+       </td>
        {% if forloop.last %}
          </tr>
        {% else %}
