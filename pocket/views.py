@@ -1,11 +1,6 @@
 import random
-from django.http import HttpResponse
 from django.shortcuts import render
-from django.template import loader, RequestContext
 from pocket.models import Pocket
-
-
-
 
 
 def index(request):
@@ -13,15 +8,8 @@ def index(request):
     for n in range(0,9):
         a = Pocket.objects.create_pocket(str(random.randint(0,9)))
         a.save()
-    # a.shuffle()
-    # return HttpResponse(Pocket.objects.all())
     return render(request, "index.html", {"number": Pocket.objects.all()})
 
-    # template = loader.get_template('index.html')
-    # context = RequestContext(request, {
-    #     'number': Pocket.objects.all(),
-    # })
-    # return HttpResponse(template.render(context))
 
 def cycle(request):
     boo = []

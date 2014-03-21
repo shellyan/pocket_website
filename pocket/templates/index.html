@@ -53,15 +53,6 @@
     }
     </style>
     </head>
-{#    <div class="list">#}
-{#    <ul>#}
-{#        {% for n in number %}#}
-{#        <li> {{  n.number }} </li>#}
-{#        {% endfor %}#}
-{#    </ul>#}
-{#    </div>#}
-
-
     <table><tr>
     {% for field in number %}
        <td  id = 'color{{ field }}' >
@@ -76,6 +67,9 @@
        {% endif %}
     {% endfor %}
     </table>
+    <p>
+       <a href="/pocket/cycle"><input type="button" value="Cycle"></a>
+    </p>
 
         {% render_table number %}
 
