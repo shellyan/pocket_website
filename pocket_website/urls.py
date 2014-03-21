@@ -8,5 +8,6 @@ urlpatterns = patterns('',
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^pocket/', include('pocket.urls')),
+    url(r'^', include('pocket.urls')),
 
 )
