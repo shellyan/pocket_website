@@ -1,0 +1,64 @@
+{#main/templates/index.html #}
+{#{% load render_table from django_tables2 %}#}
+{#<!doctype html>#}
+{#<html>#}
+{#    <head>#}
+{#        <link rel="stylesheet" href="{{ STATIC_URL }}django_tables2/themes/paleblue/css/screen.css" />#}
+{#    </head>#}
+{#    <body>#}
+{#        {% render_table number %}#}
+{#    </body>#}
+{#</html>#}
+
+
+{% load render_table from django_tables2 %}
+<html>
+    <head>
+    <link rel="stylesheet" href="{{ STATIC_URL }}django_tables2/themes/paleblue/css/screen.css" />
+
+    <script type="text/javascript">
+    var data = ["A", "B", "C", "D", "E", "F", "G", "H", "I" ]; // corrected Array syntax
+    var table = document.createElement("table");
+    var i = 0;
+    for (var r = 0; r < 3; r++) {
+      var row = table.insertRow(-1);
+      for (var c = 0; c < 3; c++) {
+        var cell = row.insertCell(-1);
+        cell.appendChild(document.createTextNode(data[i++]));
+      }
+    }
+
+    document.body.appendChild(table);
+    </script>
+
+
+    original set is
+    {% for n in number %}
+        {{  n.number }}
+    {% endfor %}
+    </head>
+{#    <div class="list">#}
+{#    <ul>#}
+{#        {% for n in number %}#}
+{#        <li> {{  n.number }} </li>#}
+{#        {% endfor %}#}
+{#    </ul>#}
+{#    </div>#}
+
+
+    <table><tr>
+    {% for field in number %}
+       <td>{{ field }}</td>
+       {% if forloop.last %}
+         </tr>
+       {% else %}
+         {% if forloop.counter|divisibleby:"3" %}
+           </tr><tr>
+         {% endif %}
+       {% endif %}
+    {% endfor %}
+    </table>
+
+        {% render_table number %}
+
+</html>
